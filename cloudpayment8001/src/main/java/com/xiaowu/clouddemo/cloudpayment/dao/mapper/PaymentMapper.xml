@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaowu.clouddemo.cloudpayment.dao.PaymentMapper">
+    <insert id="createPayment" parameterType="com.xiaowu.clouddemo.common.dto.Payment">
+      insert into payment(payment_serial)values(#{paymentSerial, jdbcType=VARCHAR})
+    </insert>
+    <select id="getPaymentById" resultType="com.xiaowu.clouddemo.common.dto.Payment">
+        select
+          payment_id paymentId,
+          payment_serial paymentSerial
+        from payment
+        where payment_id = #{paymentId, jdbcType=BIGINT}
+    </select>
+</mapper>
